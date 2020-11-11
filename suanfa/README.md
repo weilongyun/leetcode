@@ -14,7 +14,6 @@
  8、git commit -m "本次提交的注释"
  9、git push -u origin master
  10、此时提交到了master上
- 11、访问https://github.com/weilongyun/leetcode查看是否有你的文件
-
+ 11、访问https://github.com/weilongyun/leetcode查看是否有你的文件Ω
 # 注意 提交代码前先把你的邮箱发给我，我给你加入到群组，收到邮件
 后点击一下加入群组，之后就可以提交代码了哈
