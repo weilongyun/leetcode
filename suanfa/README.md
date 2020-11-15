@@ -1,5 +1,7 @@
 #goland激活到2089年步骤
-https://blog.csdn.net/weixin_37509194/article/details/109700272
+golang 激活码
+链接：https://pan.baidu.com/s/1dmr_kFe13Mat9urt1CNlRA 提取码：hlhy
+https://pan.baidu.com/s/1Fu7CC7uRN_4tu3HMLGDOUg 提取码：pe3j
 
 # leetcode 提交代码步骤
 1 提交规范：
