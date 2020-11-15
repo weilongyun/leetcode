@@ -1,3 +1,6 @@
+#goland激活到2089年步骤
+https://blog.csdn.net/weixin_37509194/article/details/109700272
+
 # leetcode 提交代码步骤
 1 提交规范：
 每周新增加一个文件夹，文件夹格式20201111
@@ -18,4 +21,7 @@
  11、访问https://github.com/weilongyun/leetcode查看是否有你的文件Ω
 # 注意 提交代码前先把你的邮箱发给我，我给你加入到群组，收到邮件
 后点击一下加入群组，之后就可以提交代码了哈
+
+
+
 
