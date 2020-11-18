@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+/**
+  @desc https://leetcode-cn.com/problems/linked-list-cycle-lcci/
+  @author 田力
+  @date  2020-11-15
+*/
+>>>>>>> leedcode_20201115
 package main
 
 import (
