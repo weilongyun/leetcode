@@ -1,0 +1,330 @@
+%GOROOT%\bin   		path
+D:\Program Files\go	GOROOT
+D:\go_work		GOPATH
+
+C:\Users\O_O\AppData\Local\Temp	// 临时文件存放的地方   如微信的聊天信息中的图片
+
+create table `students` (
+`id` int(5) not null auto_increment,
+`name` varchar(10),
+`idnumber` char(8),
+`age` tinyint(3), 
+`gender` char(1),
+primary key(`id`),
+)engine=innodb defult charset=utf8;
+
+CREATE TABLE IF NOT EXISTS `runoob_tbl`(
+   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
+   `runoob_title` VARCHAR(100) NOT NULL,
+   `runoob_author` VARCHAR(40) NOT NULL,
+   `submission_date` DATE,
+   PRIMARY KEY ( `runoob_id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `students` (
+	`id` INT(5) UNSIGNED AUTO_INCREMENT,
+	`name` VARCHAR(10) DEFAULT 'Tom',
+	`age` TINYINT(3) DEFAULT 1,
+	`gender` CHAR(1) DEFAULT 'Male',
+	`idnumber` VARCHAR(10),
+	PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `students` (
+`id` INT(5) UNSIGNED AUTO_INCREMENT,
+`name` VARCHAR(10) DEFAULT 'Tom',
+`age` TINYINT(3) DEFAULT 1,
+`gender` CHAR(6) DEFAULT 'Male',
+`stuid` VARCHAR(8),
+PRIMARY KEY(`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+insert into students (`name`,`age`,`gender`,`stuid`) values ('tianli',24,'Male','20156585');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('xiaoming',27,'Male','20166485');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('lancy',18,'Female','20152385');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('juliya',24,'Female','20154585');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('Miss',18,'Female','20154354');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('Lua',19,'Female','20165154');
+
+insert into students (`name`,`age`,`gender`,`stuid`) values ('gfds',24,'Male','20874243');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('lhjk',02,'Male','20125434');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('cdfg',24,'Female','20152385');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('erwf',07,'Female','20543467');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('vx54',73,'Male','20132133');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('nb76',18,'Female','23354323');
+
+insert into students (`name`,`age`,`gender`,`stuid`) values ('it4t',39,'Male','20254234');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('fdg4',23,'Male','21282343');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('bc56',28,'Female','34523347');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('bff4',14,'Female','12123721');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('sds3',86,'Male','42043544');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('nhj7',52,'Female','27406534');
+insert into students (`name`,`age`,`gender`,`stuid`) values ('nhj7',52,'Female',null);
+
+#蠕虫复制
+create table stu_info like students;
+insert into stu_info (`name`,`age`,`gender`,`idnumber`) values select (`name`,`age`,`gender`,`idnumber`) from students;
+
+select name , age+100 as `增加` from students;
+select name , age+100 as `add` from students;
+
+#条件查询
+select * from students where age=18;
+select * from students where age<20;
+select * from students where gender='Male';
+
+mysql> select * from students where gender='Male';
++----+--------+------+--------+----------+
+| id | name   | age  | gender | idnumber |
++----+--------+------+--------+----------+
+|  1 | 田力   |   24 | Male   | 20156585 |
+|  2 | 小明   |   27 | Male   | 20166485 |
+|  6 | 田力   |   24 | Male   | 20156585 |
+|  7 | 小明   |   27 | Male   | 20166485 |
+
+
+--条件查询and
+select * from students where age <=20 and age >=18;
+mysql> select * from students where age <=20 and age >=18;
++----+-------+------+----------+----------+
+| id | name  | age  | gender   | idnumber |
++----+-------+------+----------+----------+
+|  3 | lancy |   18 | Female   | 20152385 |
+|  5 | Miss  |   18 | Female   | 20154354 |
+|  8 | lancy |   18 | Female   | 20152385 |
+| 10 | Miss  |   18 | Female   | 20154354 |
+| 13 | lancy |   18 | Female   | 20152385 |
+| 15 | Miss  |   18 | Female   | 20154354 |
+| 18 | lancy |   18 | Female   | 20152385 |
+
+
+--条件查询and
+select * from students where gender='Female' and age <=18;
+mysql> select * from students where gender='Female' and age <=18;
++----+-------+------+----------+----------+
+| id | name  | age  | gender   | idnumber |
++----+-------+------+----------+----------+
+|  3 | lancy |   18 | Female   | 20152385 |
+|  5 | Miss  |   18 | Female   | 20154354 |
+|  8 | lancy |   18 | Female   | 20152385 |
+| 10 | Miss  |   18 | Female   | 20154354 |
+| 13 | lancy |   18 | Female   | 20152385 |
+
+
+--条件查询between...and...
+select * from students where age between 20 and 18;
+mysql> select * from students where age between 18 and 20;
++----+-------+------+----------+----------+
+| id | name  | age  | gender   | idnumber |
++----+-------+------+----------+----------+
+|  3 | lancy |   18 | Female   | 20152385 |
+|  5 | Miss  |   18 | Female   | 20154354 |
+|  8 | lancy |   18 | Female   | 20152385 |
+| 10 | Miss  |   18 | Female   | 20154354 |
+| 13 | lancy |   18 | Female   | 20152385 |
+| 15 | Miss  |   18 | Female   | 20154354 |
+| 18 | lancy |   18 | Female   | 20152385 |
+| 20 | Miss  |   18 | Female   | 20154354 |
+
+
+--条件查询is null
+mysql> select * from students where `idnumber` is null;
++----+--------+------+--------+----------+
+| id | name   | age  | gender | idnumber |
++----+--------+------+--------+----------+
+| 42 | 田力   |   24 | Male   | NULL     |
++----+--------+------+--------+----------+
+1 row in set (0.00 sec)
+
+
+--条件查询is not null
+mysql> select * from students where `idnumber` is not null;
++----+--------+------+--------+----------+
+| id | name   | age  | gender | idnumber |
++----+--------+------+--------+----------+
+|  1 | 田力   |   24 | Male   | 20156585 |
+|  2 | 小明   |   27 | Male   | 20166485 |
+|  3 | lancy  |   18 | Female | 20152385 |
+|  4 | juliya |   24 | Female | 20154585 |
+|  5 | Miss   |   18 | Female | 20154354 |
+|  6 | 田力   |   24 | Male   | 20156585 |
+|  7 | 小明   |   27 | Male   | 20166485 |
+
+
+--条件查询or
+mysql> select * from students where name='Miss' or name='Lua';
++----+------+------+----------+----------+
+| id | name | age  | gender   | idnumber |
++----+------+------+----------+----------+
+|  5 | Miss |   18 | Female   | 20154354 |
+| 10 | Miss |   18 | Female   | 20154354 |
+| 15 | Miss |   18 | Female   | 20154354 |
+| 20 | Miss |   18 | Female   | 20154354 |
+| 25 | Miss |   18 | Female   | 20154354 |
+| 30 | Miss |   18 | Female   | 20154354 |
+| 35 | Miss |   18 | Female   | 20154354 |
+| 40 | Miss |   18 | Female   | 20154354 |
+| 41 | Lua  |   19 | Female   | 20165154 |
++----+------+------+----------+----------+
+9 rows in set (0.00 sec) 
+
+
+--混合条件查询and or
+select * from students where id>20 and name='Miss' or name='Lua';
+mysql> select * from students where id>20 and name='Miss' or name='田力';
++----+--------+------+--------+----------+
+| id | name   | age  | gender | idnumber |
++----+--------+------+--------+----------+
+|  1 | 田力   |   24 | Male   | 20156585 |
+|  6 | 田力   |   24 | Male   | 20156585 |
+| 11 | 田力   |   24 | Male   | 20156585 |
+| 16 | 田力   |   24 | Male   | 20156585 |
+| 21 | 田力   |   24 | Male   | 20156585 |
+| 25 | Miss   |   18 | Female | 20154354 |
+| 26 | 田力   |   24 | Male   | 20156585 |
+| 30 | Miss   |   18 | Female | 20154354 |
+| 31 | 田力   |   24 | Male   | 20156585 |
+| 35 | Miss   |   18 | Female | 20154354 |
+| 36 | 田力   |   24 | Male   | 20156585 |
+| 40 | Miss   |   18 | Female | 20154354 |
+| 42 | 田力   |   24 | Male   | NULL     |
++----+--------+------+--------+----------+
+13 rows in set (0.00 sec)
+
+
+--通过括号()来改变优先级
+select * from students where id>20 and (name='Miss' or name='田力');
+mysql> select * from students where id>20 and (name='Miss' or name='田力');
++----+--------+------+--------+----------+
+| id | name   | age  | gender | idnumber |
++----+--------+------+--------+----------+
+| 21 | 田力   |   24 | Male   | 20156585 |
+| 25 | Miss   |   18 | Female | 20154354 |
+| 26 | 田力   |   24 | Male   | 20156585 |
+| 30 | Miss   |   18 | Female | 20154354 |
+| 31 | 田力   |   24 | Male   | 20156585 |
+| 35 | Miss   |   18 | Female | 20154354 |
+| 36 | 田力   |   24 | Male   | 20156585 |
+| 40 | Miss   |   18 | Female | 20154354 |
+| 42 | 田力   |   24 | Male   | NULL     |
++----+--------+------+--------+----------+
+9 rows in set (0.00 sec)
+
+--条件查询in
+select * from students where id in(10,20,30,40);
+mysql> select * from students where id in(10,20,30,40);
++----+------+------+----------+----------+
+| id | name | age  | gender   | idnumber |
++----+------+------+----------+----------+
+| 10 | Miss |   18 | Female   | 20154354 |
+| 30 | Miss |   18 | Female   | 20154354 |
+| 40 | Miss |   18 | Female   | 20154354 |
++----+------+------+----------+----------+
+3 rows in set (0.00 sec)
+
+--条件查询not in
+mysql> select * from students where id not in(10,20,30,40);
++----+--------+------+---------+----------+
+| id | name   | age  | gender | idnumber |
++----+--------+------+--------+----------+
+|  1 | 田力   |   24 | Male   | 20156585 |
+|  2 | 小明   |   27 | Male   | 20166485 |
+|  3 | lancy  |   18 | Female | 20152385 |
+|  4 | juliya |   24 | Female | 20154585 |
+|  5 | Miss   |   18 | Female | 20154354 |
+|  6 | 田力   |   24 | Male   | 20156585 |
+|  7 | 小明   |   27 | Male   | 20166485 |
+
+--模糊查询like
+select * from students where name like '%a%';
+mysql> select * from students where name like "%a%";
++----+--------+------+----------+----------+
+| id | name   | age  | gender   | idnumber |
++----+--------+------+----------+----------+
+|  3 | lancy  |   18 | Female   | 20152385 |
+|  4 | juliya |   24 | Female   | 20154585 |
+|  8 | lancy  |   18 | Female   | 20152385 |
+|  9 | juliya |   24 | Female   | 20154585 |
+| 13 | lancy  |   18 | Female   | 20152385 |
+| 14 | juliya |   24 | Female   | 20154585 |
+| 18 | lancy  |   18 | Female   | 20152385 |
+| 19 | juliya |   24 | Female   | 20154585 |
+| 23 | lancy  |   18 | Female   | 20152385 |
+| 24 | juliya |   24 | Female   | 20154585 |
+| 28 | lancy  |   18 | Female   | 20152385 |
+| 29 | juliya |   24 | Female   | 20154585 |
+| 33 | lancy  |   18 | Female   | 20152385 |
+| 34 | juliya |   24 | Female   | 20154585 |
+| 38 | lancy  |   18 | Female   | 20152385 |
+| 39 | juliya |   24 | Female   | 20154585 |
+| 41 | Lua    |   19 | Female   | 20165154 |
++----+--------+------+----------+----------+
+17 rows in set (0.00 sec)
+
+
+mysql> select * from students where name like '__a';
++----+------+------+---------+----------+
+| id | name | age  | gender  | idnumber |
++----+------+------+---------+----------+
+| 41 | Lua  |   19 | Female  | 20165154 |
++----+------+------+---------+----------+
+1 row in set (0.00 sec)
+
+
+mysql> select * from students where name like "%y_";
++----+--------+------+----------+----------+
+| id | name   | age  | gender   | idnumber |
++----+--------+------+----------+----------+
+|  4 | juliya |   24 | Female   | 20154585 |
+|  9 | juliya |   24 | Female   | 20154585 |
+| 14 | juliya |   24 | Female   | 20154585 |
+| 19 | juliya |   24 | Female   | 20154585 |
+| 24 | juliya |   24 | Female   | 20154585 |
+| 29 | juliya |   24 | Female   | 20154585 |
+| 34 | juliya |   24 | Female   | 20154585 |
+| 39 | juliya |   24 | Female   | 20154585 |
++----+--------+------+----------+----------+
+8 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
