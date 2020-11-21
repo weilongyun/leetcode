@@ -1,34 +1,10 @@
-%GOROOT%\bin   		path
-D:\Program Files\go	GOROOT
-D:\go_work		GOPATH
-
-C:\Users\O_O\AppData\Local\Temp	// 临时文件存放的地方   如微信的聊天信息中的图片
-
-create table `students` (
-`id` int(5) not null auto_increment,
-`name` varchar(10),
-`idnumber` char(8),
-`age` tinyint(3), 
-`gender` char(1),
-primary key(`id`),
-)engine=innodb defult charset=utf8;
-
-CREATE TABLE IF NOT EXISTS `runoob_tbl`(
-   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
-   `runoob_title` VARCHAR(100) NOT NULL,
-   `runoob_author` VARCHAR(40) NOT NULL,
-   `submission_date` DATE,
-   PRIMARY KEY ( `runoob_id` )
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS `students` (
-	`id` INT(5) UNSIGNED AUTO_INCREMENT,
-	`name` VARCHAR(10) DEFAULT 'Tom',
-	`age` TINYINT(3) DEFAULT 1,
-	`gender` CHAR(1) DEFAULT 'Male',
-	`idnumber` VARCHAR(10),
-	PRIMARY KEY (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/**
+  @info 其中主要将的mysql的查询语句，也简单讲了表的创建和插入数据等，里面的
+        的数据有些出入，sql语句执行的结果是在虚拟机中的mysql操作结果，而创
+	建表和insert数据是在docker中的表，但是sql语句都是差不多的 
+  @author 田力
+  @date  2020-11-21
+*/
 
 CREATE TABLE IF NOT EXISTS `students` (
 `id` INT(5) UNSIGNED AUTO_INCREMENT,
@@ -38,8 +14,6 @@ CREATE TABLE IF NOT EXISTS `students` (
 `stuid` VARCHAR(8),
 PRIMARY KEY(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 insert into students (`name`,`age`,`gender`,`stuid`) values ('tianli',24,'Male','20156585');
 insert into students (`name`,`age`,`gender`,`stuid`) values ('xiaoming',27,'Male','20166485');
