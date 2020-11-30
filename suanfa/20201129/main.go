@@ -10,7 +10,7 @@ import (
 	"math"
 )
 
-// maxWater 最大能盛多少水
+// maxWater 最多能盛多少水
 func maxWater(arr []float64) ( /*最大盛水*/ maxW float64) {
 	l := 0            // 坐下标
 	r := len(arr) - 1 // 右下标
