@@ -22,11 +22,14 @@ func main() {
 	fmt.Println("\n")
 	//后续遍历
 	tree.Hou(tree.Root)//后
+	fmt.Println("\n")
 
+	//计算二叉树的最大深度
+	fmt.Println("二叉树的深度是：",tree.Height(tree.Root))
 
 	//是否是平衡二叉树 https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/
-	
-	//计算二叉树的最大深度
+
+
 
 }
 

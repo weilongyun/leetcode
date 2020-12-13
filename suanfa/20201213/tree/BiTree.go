@@ -1,6 +1,9 @@
 package tree
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Tree struct {
 	Root * TreeNode
@@ -78,3 +81,10 @@ func (tree *Tree)Hou(node *TreeNode) {
 	fmt.Print(node.Value , " ")
 }
 
+func (tree *Tree)Height(node *TreeNode) float64 {
+	if node == nil {
+		return  0;
+
+	}
+	return math.Max(tree.Height(node.Left) , tree.Height(node.Right)) + 1
+}
