@@ -65,6 +65,10 @@ func (tree *Tree)Zhong(node *TreeNode) {
 	tree.Zhong(node.Right)
 }
 
+/*
+	前序遍历的顺序是  左 -----> 右 -----> 根
+*/
+
 func (tree *Tree)Hou(node *TreeNode) {
 	if node == nil {
 		return

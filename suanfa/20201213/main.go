@@ -5,7 +5,8 @@ import (
 	"fmt"
 )
 func main() {
-	tree := tree.Tree{}
+
+	tree := tree.Tree{}//建立二叉树
 	tree.TreeAdd(10)
 	tree.TreeAdd(11)
 	tree.TreeAdd(12)
@@ -13,11 +14,19 @@ func main() {
 	tree.TreeAdd(8)
 	tree.TreeAdd(13)
 
-	tree.Qian(tree.Root)//前
+	//前序遍历
+	tree.Qian(tree.Root)
 	fmt.Println("\n")
-	tree.Zhong(tree.Root)//中
+	//中序遍历
+	tree.Zhong(tree.Root)
 	fmt.Println("\n")
+	//后续遍历
 	tree.Hou(tree.Root)//后
+
+
+	//是否是平衡二叉树 https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/
+	
+	//计算二叉树的最大深度
 
 }
 
