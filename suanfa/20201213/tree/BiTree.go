@@ -83,8 +83,7 @@ func (tree *Tree)Hou(node *TreeNode) {
 
 func (tree *Tree)Height(node *TreeNode) float64 {
 	if node == nil {
-		return  0;
-
+		return  0
 	}
 	return math.Max(tree.Height(node.Left) , tree.Height(node.Right)) + 1
 }
