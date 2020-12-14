@@ -10,6 +10,7 @@ type Tree struct {
 	Root * TreeNode
 }
 
+//和层序遍历很像了
 func (self * Tree)TreeAdd(num int)  {
 	node := new(TreeNode)
 	node.Value = num
@@ -57,6 +58,31 @@ func (tree *Tree)Qian(node *TreeNode) {
 	tree.Qian(node.Right)
 }
 
+//非递归方式实现
+func (tree *Tree)QianUnRecursion(node *TreeNode) {
+	if node == nil {
+		return
+	}
+
+	statck := new(Stack).NewStack()
+	var tmp *TreeNode
+	tmp = node
+
+	for tmp != nil || statck.Len() != 0 {
+		for tmp != nil {
+			fmt.Print(tmp.Value," ")
+			statck.Push(tmp)
+			tmp = tmp.Left
+		}
+
+		if statck.Len() != 0 {
+			tmp = statck.Pop()
+			tmp = tmp.Right
+		}
+
+	}
+}
+
 /*
 	前序遍历的顺序是  左 -----> 根 -----> 右
 */
@@ -102,7 +128,7 @@ func (tree *Tree)Height(node *TreeNode) int {
 	for queue.Len() !=0 {
 		height++
 		queueLen := queue.Len()     //当前的度列长度，当前层树节点的个数
-		for i:=0;i< queueLen;i++ {  //遍历每一层，每个树的节点
+		for i := 0; i < queueLen; i++ {  //遍历每一层，每个树的节点
 			queueNode, _ := queue.Front().Value.(*TreeNode)
 			queue.Remove(queue.Front())
 			if queueNode.Right != nil {
