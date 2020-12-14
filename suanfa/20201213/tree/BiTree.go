@@ -1,6 +1,7 @@
 package tree
 
 import (
+	"container/list"
 	"fmt"
 	"math"
 )
@@ -81,9 +82,37 @@ func (tree *Tree)Hou(node *TreeNode) {
 	fmt.Print(node.Value , " ")
 }
 
-func (tree *Tree)Height(node *TreeNode) float64 {
+//递归方式 树的高度
+func (tree *Tree)RecursionHeight(node *TreeNode) float64 {
 	if node == nil {
 		return  0
 	}
-	return math.Max(tree.Height(node.Left) , tree.Height(node.Right)) + 1
+	return math.Max(tree.RecursionHeight(node.Left) , tree.RecursionHeight(node.Right)) + 1
+}
+
+//非递归方式 树的高度
+func (tree *Tree)Height(node *TreeNode) int {
+	if node == nil {
+		return  0
+	}
+
+	queue := list.New()    //定义队列
+	queue.PushBack(node)   //当前的主节点压如度列当中
+	var height int = 0
+	for queue.Len() !=0 {
+		height++
+		queueLen := queue.Len()     //当前的度列长度，当前层树节点的个数
+		for i:=0;i< queueLen;i++ {  //遍历每一层，每个树的节点
+			queueNode, _ := queue.Front().Value.(*TreeNode)
+			queue.Remove(queue.Front())
+			if queueNode.Right != nil {
+				queue.PushBack(queueNode.Right)
+			}
+			if queueNode.Left != nil {
+				queue.PushBack(queueNode.Left)
+			}
+		}
+
+	}
+	return  height
 }
