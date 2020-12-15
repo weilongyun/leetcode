@@ -3,6 +3,7 @@ package main
 import (
 	"./tree"
 	"fmt"
+	"os"
 )
 func main() {
 
@@ -14,6 +15,10 @@ func main() {
 	tree.TreeAdd(8)
 	tree.TreeAdd(12)
 
+	tree.LevelOrder(tree.Root)
+	fmt.Println("层序遍历\n")
+
+	os.Exit(1)
 	//前序遍历
 	tree.Qian(tree.Root)
 	fmt.Println("递归前序遍历\n")

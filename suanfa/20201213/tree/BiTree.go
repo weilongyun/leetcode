@@ -10,7 +10,10 @@ type Tree struct {
 	Root * TreeNode
 }
 
-//和层序遍历很像了
+/*
+	二叉树的创建
+*/
+
 func (self * Tree)TreeAdd(num int)  {
 	node := new(TreeNode)
 	node.Value = num
@@ -86,6 +89,7 @@ func (tree *Tree)QianUnRecursion(node *TreeNode) {
 /*
 	前序遍历的顺序是  左 -----> 根 -----> 右
 */
+
 func (tree *Tree)Zhong(node *TreeNode) {
 	if node == nil {
 		return
@@ -106,6 +110,33 @@ func (tree *Tree)Hou(node *TreeNode) {
 	tree.Hou(node.Left)
 	tree.Hou(node.Right)
 	fmt.Print(node.Value , " ")
+}
+
+/*
+	层序遍历
+*/
+
+func (tree *Tree) LevelOrder (node *TreeNode) {
+	if node == nil {
+		return
+	}
+	
+	queue := list.New()    //定义队列
+	queue.PushBack(node)   //当前的主节点压如度列当中
+
+	for queue.Len() != 0 {
+		queueNode, _ := queue.Front().Value.(*TreeNode)
+		queue.Remove(queue.Front())
+		if queueNode.Left != nil {
+			queue.PushBack(queueNode.Left)
+		}
+		if queueNode.Right != nil {
+			queue.PushBack(queueNode.Right)
+		}
+
+		fmt.Print(queueNode.Value," ")
+	}
+	
 }
 
 //递归方式 树的高度
