@@ -5,11 +5,6 @@ import (
 	"strconv"
 )
 
-/*
-    单调递增的数字
-  	https://leetcode-cn.com/problems/monotone-increasing-digits/
- */
-
 var mapOne = make(map[int]int)
 
 func getIntOne(len int) int {
@@ -25,6 +20,11 @@ func getIntOne(len int) int {
 	mapOne[len] = intOne
 	return intOne
 }
+
+/*
+    单调递增的数字
+  	https://leetcode-cn.com/problems/monotone-increasing-digits/
+*/
 
 func getIncreIntNum(num int) int {
 	var total int
@@ -49,33 +49,10 @@ func getIncreIntNum(num int) int {
 	return  total
 }
 
-/*
-	内存没最优解使用少
-*/
 func main() {
 	fmt.Println(getIncreIntNum(16543));
+	fmt.Print("\n")
 }
 
-/*
-	最优解
-*/
-func monotoneIncreasingDigits(n int) int {
-	s := []byte(strconv.Itoa(n))
-	i := 1
-	for i < len(s) && s[i] >= s[i-1] {
-		i++
-	}
-	if i < len(s) {
-		for i > 0 && s[i] < s[i-1] {
-			s[i-1]--
-			i--
-		}
-		for i++; i < len(s); i++ {
-			s[i] = '9'
-		}
-	}
-	ans, _ := strconv.Atoi(string(s))
-	return ans
-}
 
 

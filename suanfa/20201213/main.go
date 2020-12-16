@@ -3,11 +3,20 @@ package main
 import (
 	"./tree"
 	"fmt"
+	"os"
 )
+
 func main() {
+
+	num := []int{3,2,4}
+	res := tree.TwoSum(num,6)
+	fmt.Print(res)
+	os.Exit(1)
+
 
 	tree := tree.Tree{}//建立二叉树
 	tree.TreeAdd(10)
+
 	tree.TreeAdd(11)
 	tree.TreeAdd(13)
 	tree.TreeAdd(9)
