@@ -10,7 +10,7 @@ import (
   	https://leetcode-cn.com/problems/monotone-increasing-digits/
  */
 
-var mapOne =  make(map[int]int)
+var mapOne = make(map[int]int)
 
 func getIntOne(len int) int {
 	if mapOne[len] != 0 {
