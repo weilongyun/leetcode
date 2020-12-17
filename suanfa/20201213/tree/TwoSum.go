@@ -49,13 +49,13 @@ func (self *TreeTowSum) treeAdd (value int ,index int)  {
 	return
 }
 
-func (self *TreeTowSum) find (value int) int {
+func (self *TreeTowSum) find (value int,index int) int {
 	queue := list.New()
 	queue.PushBack(self.Root)
 
 	for queue.Len() != 0 {
 		queueNode, _ := queue.Front().Value.(*TreeTowSumNode)
-		if queueNode.Value == value {
+		if queueNode.Value == value && queueNode.Index != index{
 			return queueNode.Index
 		}
 		queue.Remove(queue.Front())
@@ -70,6 +70,10 @@ func (self *TreeTowSum) find (value int) int {
 	return -1
 }
 
+/*
+	https://leetcode-cn.com/problems/two-sum/
+	树算法
+*/
 
 func TwoSum(nums []int, target int) []int {
 	tree := TreeTowSum{}
@@ -80,15 +84,31 @@ func TwoSum(nums []int, target int) []int {
 		tree.treeAdd(value,index)
 	}
 
-	for _, value := range nums {
-		index = tree.find(target - value)
-		if index < 0 {
+	for idx, value := range nums {
+		index = tree.find(target - value,idx)
+		if index < 0 || idx == index {
 			continue
 		}
-
-		res = append(res,tree.find(value))
+		res = append(res,idx)
 		res = append(res,index)
 		return res
  	}
  	return res
 }
+
+/*
+	https://leetcode-cn.com/problems/two-sum/
+	官方算法
+*/
+
+func twoSum(nums []int, target int) []int {
+	hashTable := map[int]int{}
+	for i, x := range nums {
+		if p, ok := hashTable[target-x]; ok {
+			return []int{p, i}
+		}
+		hashTable[x] = i
+	}
+	return nil
+}
+
