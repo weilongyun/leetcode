@@ -9,12 +9,17 @@ import (
 func main() {
 
 	binaryTree := tree.Tree{}//建立二叉树
-	binaryTree.TreeAdd(10)
-	binaryTree.TreeAdd(11)
-	binaryTree.TreeAdd(13)
-	binaryTree.TreeAdd(9)
-	binaryTree.TreeAdd(8)
-	binaryTree.TreeAdd(12)
+	//binaryTree.TreeAdd(10)
+	//binaryTree.TreeAdd(11)
+	//binaryTree.TreeAdd(13)
+	//binaryTree.TreeAdd(9)
+	//binaryTree.TreeAdd(8)
+	//binaryTree.TreeAdd(12)
+
+	qian :=  []int{3,9,20,15,7}
+	zhong := []int{9,3,15,20,7}
+	binaryTree.Root = tree.BuildTree(qian,zhong)
+	fmt.Println("根据前序遍历和中序遍历创建还原二叉树\n")
 
 	binaryTree.LevelOrder(binaryTree.Root)
 	fmt.Println("层序遍历\n")
@@ -43,5 +48,6 @@ func main() {
 	nums := []int{1,2,3,5,6}
 	res := tree.TwoSum(nums,11)
 	fmt.Println("树实现两数之和数组下标：",res)
+
 }
 
