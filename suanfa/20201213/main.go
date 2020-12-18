@@ -9,12 +9,12 @@ import (
 func main() {
 
 	binaryTree := tree.Tree{}//建立二叉树
-	//binaryTree.TreeAdd(10)
-	//binaryTree.TreeAdd(11)
-	//binaryTree.TreeAdd(13)
-	//binaryTree.TreeAdd(9)
-	//binaryTree.TreeAdd(8)
-	//binaryTree.TreeAdd(12)
+	binaryTree.TreeAdd(10)
+	binaryTree.TreeAdd(11)
+	binaryTree.TreeAdd(13)
+	binaryTree.TreeAdd(9)
+	binaryTree.TreeAdd(8)
+	binaryTree.TreeAdd(12)
 
 	qian :=  []int{3,9,20,15,7}
 	zhong := []int{9,3,15,20,7}
