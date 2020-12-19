@@ -6,6 +6,20 @@
   @date  2020-11-21
 */
 
+{"headers": {"Employee": ["Id", "Salary"]}, "rows": {"Employee": [[1, 100]]}}
+
+create table `tt` (`id` int unsigned auto_increment, `salary` int unsigned, primary key(`id`))engine=innodb default charset=utf8;
+select * from tt order by id desc;	// 降序
+select * from tt order by id asc;	// 升序
+select * from tt order by id desc limit 3;	// 降序的前三个
+select * from tt order by id desc limit 3,2;	// 降序后从第三个位置起，取两个记录
+select min(salary) from tt;	// salary最小的
+select max(salary) from tt;	// salary最大的
+
+select max(salary) as SecondHighestSalary from Employee where salary < (select max(salary) from Employee);
+select IFNULL((select distinct(salary) from Employee order by salary desc limit 1,1),null) as SecondHighestSalary;
+
+
 CREATE TABLE IF NOT EXISTS `students` (
 `id` INT(5) UNSIGNED AUTO_INCREMENT,
 `name` VARCHAR(10) DEFAULT 'Tom',

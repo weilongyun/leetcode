@@ -8,6 +8,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"runtime"
 )
 
 // maxWater 最多能盛多少水
@@ -29,7 +30,8 @@ func maxWater(arr []float64) ( /*最大盛水*/ maxW float64) {
 }
 
 func main() {
-	var array []float64 = []float64{1, 8, 6, 2, 5, 4, 8, 3, 7}
+	var array = []float64{1, 8, 6, 2, 5, 4, 8, 3, 7}
 	maxW := maxWater(array)
 	fmt.Printf("最大盛水容量：%v\n", maxW)
+	fmt.Println(runtime.NumCPU())
 }
