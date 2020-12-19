@@ -48,6 +48,73 @@ func (self * Tree)TreeAdd(num int)  {
 	return
 }
 
+var  mapQianReversal = make(map[int]int)
+
+func FindNaxIndex(nums []int) int {
+	var index int = 0
+	tmpIndex := mapQianReversal[nums[0]]
+	for k, v := range nums {
+		if tmpIndex > mapQianReversal[v] {
+			tmpIndex = mapQianReversal[v]
+			index = k
+		}
+	}
+
+	return index
+}
+
+func findRootIndex(zhong []int,value int) int {
+	for k, v := range zhong {
+		if v== value {
+			return k
+		}
+	}
+	return 0
+}
+
+func makeNode(nums []int)  *TreeNode {
+	if len(nums) == 0 {
+		return nil
+	}
+
+	node := new(TreeNode)
+
+	index := FindNaxIndex(nums)
+	value := nums[index]
+	node.Value = value
+	left  := nums[:index]
+	right := nums[index+1:]
+	node.Left = makeNode(left)
+	node.Right = makeNode(right)
+
+	return node
+}
+
+/*
+	根据前序，中序 构建二叉树
+	https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/submissions/
+*/
+
+func BuildTree(preorder []int , inorder []int) *TreeNode {
+	if len(preorder) ==0 || len(inorder) == 0  {
+		return nil
+	}
+
+	for k, v := range preorder {
+		mapQianReversal[v] = k
+	}
+
+	node := new(TreeNode)
+	rootIndex := findRootIndex(inorder,preorder[0])
+	node.Value = preorder[0]
+
+	left  := inorder[:rootIndex]
+	right := inorder[rootIndex+1:]
+	node.Left = makeNode(left)
+	node.Right = makeNode(right)
+	return node
+}
+
 /*
  	前序遍历的顺序是  根 -----> 左子树 -----> 右子树
 */
@@ -61,7 +128,8 @@ func (tree *Tree)Qian(node *TreeNode) {
 	tree.Qian(node.Right)
 }
 
-//非递归方式实现
+//非递归方式实现前序遍历
+
 func (tree *Tree)QianUnRecursion(node *TreeNode) {
 	if node == nil {
 		return

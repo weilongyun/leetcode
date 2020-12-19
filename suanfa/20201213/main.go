@@ -3,41 +3,51 @@ package main
 import (
 	"./tree"
 	"fmt"
-	"os"
 )
+
+
 func main() {
 
-	tree := tree.Tree{}//建立二叉树
-	tree.TreeAdd(10)
-	tree.TreeAdd(11)
-	tree.TreeAdd(13)
-	tree.TreeAdd(9)
-	tree.TreeAdd(8)
-	tree.TreeAdd(12)
+	binaryTree := tree.Tree{}//建立二叉树
+	binaryTree.TreeAdd(10)
+	binaryTree.TreeAdd(11)
+	binaryTree.TreeAdd(13)
+	binaryTree.TreeAdd(9)
+	binaryTree.TreeAdd(8)
+	binaryTree.TreeAdd(12)
 
-	tree.LevelOrder(tree.Root)
+	qian :=  []int{3,9,20,15,7}
+	zhong := []int{9,3,15,20,7}
+	binaryTree.Root = tree.BuildTree(qian,zhong)
+	fmt.Println("根据前序遍历和中序遍历创建还原二叉树\n")
+
+	binaryTree.LevelOrder(binaryTree.Root)
 	fmt.Println("层序遍历\n")
 
-	os.Exit(1)
 	//前序遍历
-	tree.Qian(tree.Root)
+	binaryTree.Qian(binaryTree.Root)
 	fmt.Println("递归前序遍历\n")
 
-	tree.QianUnRecursion(tree.Root)
+	binaryTree.QianUnRecursion(binaryTree.Root)
 	fmt.Println("非递归前序遍历\n")
 
 	//中序遍历
-	tree.Zhong(tree.Root)
+	binaryTree.Zhong(binaryTree.Root)
 	fmt.Println("递归中序遍历\n")
 	//后续遍历
-	tree.Hou(tree.Root)//后
+	binaryTree.Hou(binaryTree.Root)//后
 	fmt.Println("递归后序遍历\n")
-
 	//计算二叉树的最大深度 递归方式
-	fmt.Println("递归遍历二叉树的深度是：",tree.RecursionHeight(tree.Root))
+	fmt.Println("递归遍历二叉树的深度是：",binaryTree.RecursionHeight(binaryTree.Root))
 	fmt.Println("\n")
 	//计算二叉树的深度 非递归方式
-	fmt.Println("非递归遍历二叉树的深度是：",tree.Height(tree.Root))
+	fmt.Println("非递归遍历二叉树的深度是：",binaryTree.Height(binaryTree.Root))
+	fmt.Println("\n")
+
+
+	nums := []int{1,2,3,5,6}
+	res := tree.TwoSum(nums,11)
+	fmt.Println("树实现两数之和数组下标：",res)
 
 }
 
