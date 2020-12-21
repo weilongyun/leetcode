@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 	股票买卖问题
@@ -12,9 +14,9 @@ func main() {
 	var min int  = int(^uint(0) >> 1)
 	var max int = 0
 
-	for index,value := range prices {
-		if prices[index] < min {
-			min = prices[index]
+	for _,value := range prices {
+		if value < min {
+			min = value
 		}else if value-min > max {
 			max = value-min
 		}
