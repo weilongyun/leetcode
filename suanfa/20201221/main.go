@@ -5,7 +5,7 @@ import (
 )
 
 /*
-	股票买卖问题
+	股票买卖问题一次
 	https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
 */
 
