@@ -9,7 +9,6 @@ import (
   data:20201223
   desc :雪花算法，通俗易懂解法，雪花算法图解地址：https://static.studygolang.com/190725/92bc9899976ac956ea7ace92770aa08f.png
  */
-
 //xuehua
 //64 bit 最高位为0代表是正数
 //之后的41位是代表时间戳
