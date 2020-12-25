@@ -24,7 +24,7 @@ https://baidu.gitee.io/amis/docs/start/getting-started
 			listen 8888;
 			server_name amis.qinzhewu.com;
 			index index.php;
-			root /opt/web/phpc/application/amis/phpapps/tools/public;
+			root /opt/web/phpc/application/leetcode/amis/phpapps/tools/public;
 
 			location = /favicon.ico {
 				log_not_found off;
@@ -33,7 +33,7 @@ https://baidu.gitee.io/amis/docs/start/getting-started
 
 			location /node_modules/ {
 				access_log off;
-				root /opt/web/phpc/application/amis/phpapps/tools/views;
+				root /opt/web/phpc/application/leetcode/amis/phpapps/tools/views;
 			}
 
 			  location / {
@@ -50,9 +50,9 @@ https://baidu.gitee.io/amis/docs/start/getting-started
 	（7）http://amis.qinzhewu.com:8888/test/first 访问
 
 目录结构：
-	1. /opt/web/phpc/application/amis/phpapps/tools/adminmodules 站点
-	2. /opt/web/phpc/application/amis/phpapps/tools/views/template/admin 模板，html和json配置文件
-	3. /opt/web/phpc/application/amis/phpapps/tools/views/node_modules amis 包
+	1. /opt/web/phpc/application/leetcode/amis/phpapps/tools/adminmodules 站点
+	2. /opt/web/phpc/application/leetcode/amis/phpapps/tools/views/template/admin 模板，html和json配置文件
+	3. /opt/web/phpc/application/leetcode/amis/phpapps/tools/views/node_modules amis 包
 
 
 
