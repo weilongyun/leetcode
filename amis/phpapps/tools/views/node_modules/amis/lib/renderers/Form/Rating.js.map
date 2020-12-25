@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "file": "Rating.js",
+    "sourceRoot": "",
+    "sources": [
+        "/src/renderers/Form/Rating.tsx"
+    ],
+    "names": [],
+    "mappings": ";;;;AAAA,wDAA0B;AAC1B,+BAAmE;AACnE,2EAA6C;AA2B7C;IAA2C,yCAAiC;IAA5E;;IAiCA,CAAC;IAzBC,8BAAM,GAAN;QACQ,IAAA,KASF,IAAI,CAAC,KAAK,EARZ,SAAS,eAAA,EACT,KAAK,WAAA,EACL,KAAK,WAAA,EACL,IAAI,UAAA,EACJ,QAAQ,cAAA,EACR,QAAQ,cAAA,EACR,IAAI,UAAA,EACQ,EAAE,gBACF,CAAC;QAEf,OAAO,CACL,uCAAK,SAAS,EAAE,EAAE,CAAC,eAAe,EAAE,SAAS,CAAC;YAC5C,8BAAC,gBAAM,IACL,UAAU,EAAE,EAAE,EACd,KAAK,EAAE,KAAK,EACZ,KAAK,EAAE,KAAK,EACZ,IAAI,EAAE,IAAI,EACV,QAAQ,EAAE,QAAQ,EAClB,QAAQ,EAAE,UAAC,KAAU,IAAK,OAAA,QAAQ,CAAC,KAAK,CAAC,EAAf,CAAe,GACzC,CACE,CACP,CAAC;IACJ,CAAC;IA/BM,0BAAY,GAAyB;QAC1C,KAAK,EAAE,CAAC;QACR,KAAK,EAAE,CAAC;QACR,IAAI,EAAE,KAAK;QACX,QAAQ,EAAE,KAAK;KAChB,CAAC;IA2BJ,oBAAC;CAAA,AAjCD,CAA2C,eAAK,CAAC,SAAS,GAiCzD;kBAjCoB,aAAa;AAuClC;IAA2C,iDAAa;IAAxD;;IAA0D,CAAC;IAA9C,qBAAqB;QAJjC,eAAQ,CAAC;YACR,IAAI,EAAE,QAAQ;YACd,WAAW,EAAE,KAAK;SACnB,CAAC;OACW,qBAAqB,CAAyB;IAAD,4BAAC;CAAA,AAA3D,CAA2C,aAAa,GAAG;AAA9C,sDAAqB",
+    "sourcesContent": [
+        "import React from 'react';\nimport {FormItem, FormControlProps, FormBaseControl} from './Item';\nimport Rating from '../../components/Rating';\n\n/**\n * Rating\n * 文档：https://baidu.gitee.io/amis/docs/components/form/rating\n */\nexport interface RatingControlSchema extends FormBaseControl {\n  type: 'rating';\n\n  /**\n   * 分数\n   */\n  count?: number;\n\n  /**\n   * 允许半颗星\n   */\n  half?: boolean;\n}\n\nexport interface RatingProps extends FormControlProps {\n  value: number;\n  count: number;\n  half: boolean;\n  readOnly: boolean;\n}\n\nexport default class RatingControl extends React.Component<RatingProps, any> {\n  static defaultProps: Partial<RatingProps> = {\n    value: 0,\n    count: 5,\n    half: false,\n    readOnly: false\n  };\n\n  render() {\n    const {\n      className,\n      value,\n      count,\n      half,\n      readOnly,\n      onChange,\n      size,\n      classnames: cx\n    } = this.props;\n\n    return (\n      <div className={cx('RatingControl', className)}>\n        <Rating\n          classnames={cx}\n          value={value}\n          count={count}\n          half={half}\n          readOnly={readOnly}\n          onChange={(value: any) => onChange(value)}\n        />\n      </div>\n    );\n  }\n}\n\n@FormItem({\n  type: 'rating',\n  sizeMutable: false\n})\nexport class RatingControlRenderer extends RatingControl {}\n"
+    ]
+}

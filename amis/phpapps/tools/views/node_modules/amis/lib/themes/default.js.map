@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "file": "default.js",
+    "sourceRoot": "",
+    "sources": [
+        "/src/themes/default.ts"
+    ],
+    "names": [],
+    "mappings": ";;;AAAA,kCAA6D;AAChD,QAAA,WAAW,GAAW,IAAI,CAAC;AAC3B,QAAA,UAAU,GAAiB,sBAAc,CAAC,mBAAW,CAAC,CAAC;AAEpE,aAAK,CAAC,SAAS,EAAE;IACf,WAAW,qBAAA;IACX,UAAU,oBAAA;CACX,CAAC,CAAC",
+    "sourcesContent": [
+        "import {theme, ClassNamesFn, makeClassnames} from '../theme';\nexport const classPrefix: string = 'a-';\nexport const classnames: ClassNamesFn = makeClassnames(classPrefix);\n\ntheme('default', {\n  classPrefix,\n  classnames\n});\n"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "file": "Textarea.js",
+    "sourceRoot": "",
+    "sources": [
+        "/src/components/Textarea.tsx"
+    ],
+    "names": [],
+    "mappings": ";;;AAAA,aAAa;AACb,4FAA+C;AAC/C,kBAAe,iCAAQ,CAAC",
+    "sourcesContent": [
+        "// @ts-ignore\nimport Textarea from 'react-textarea-autosize';\nexport default Textarea;\n"
+    ]
+}

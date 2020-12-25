@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "file": "Formula.js",
+    "sourceRoot": "",
+    "sources": [
+        "/src/components/condition-builder/Formula.tsx"
+    ],
+    "names": [],
+    "mappings": ";;;;AAAA,wDAA0B;AAC1B,qCAAkD;AAClD,iEAAmC;AAOnC;IAA6B,mCAA6B;IAA1D;;IAeA,CAAC;IAdC,wBAAM,GAAN;QACQ,IAAA,KAAoC,IAAI,CAAC,KAAK,EAAjC,EAAE,gBAAA,EAAE,KAAK,WAAA,EAAE,QAAQ,cAAc,CAAC;QAErD,OAAO,CACL,uCAAK,SAAS,EAAE,EAAE,CAAC,WAAW,CAAC;YAC7B,8BAAC,kBAAQ,IACP,KAAK,EAAE,KAAK,EACZ,QAAQ,EAAE,QAAQ,EAClB,WAAW,EAAC,gCAAO,EACnB,MAAM,EAAE,wCAAM,SAAS,EAAE,EAAE,CAAC,iBAAiB,CAAC,yBAAY,GAC1D,CACE,CACP,CAAC;IACJ,CAAC;IACH,cAAC;AAAD,CAAC,AAfD,CAA6B,eAAK,CAAC,SAAS,GAe3C;AAfY,0BAAO;AAiBpB,kBAAe,iBAAS,CAAC,OAAO,CAAC,CAAC",
+    "sourcesContent": [
+        "import React from 'react';\nimport {ThemeProps, themeable} from '../../theme';\nimport InputBox from '../InputBox';\n\nexport interface FormulaProps extends ThemeProps {\n  value: any;\n  onChange: (value: any) => void;\n}\n\nexport class Formula extends React.Component<FormulaProps> {\n  render() {\n    const {classnames: cx, value, onChange} = this.props;\n\n    return (\n      <div className={cx('CBFormula')}>\n        <InputBox\n          value={value}\n          onChange={onChange}\n          placeholder=\"请输入公式\"\n          prefix={<span className={cx('CBFormula-label')}>表达式</span>}\n        />\n      </div>\n    );\n  }\n}\n\nexport default themeable(Formula);\n"
+    ]
+}
