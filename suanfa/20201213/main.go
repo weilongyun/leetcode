@@ -49,5 +49,12 @@ func main() {
 	nums := []int{1,2,3,5,6}
 	twosum := tree.TwoSum(nums,11)
 	fmt.Println("树实现两数之和数组下标：",twosum)
+
+
+	table := tree.NewHashTable();
+	for i:=0; i < 20; i++ {
+		table.Create(i)
+	}
+	table.Print()
 }
 
