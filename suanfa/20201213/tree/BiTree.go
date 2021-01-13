@@ -188,7 +188,7 @@ func (tree *Tree) LevelOrder (node *TreeNode) {
 	if node == nil {
 		return
 	}
-	
+
 	queue := list.New()    //定义队列
 	queue.PushBack(node)   //当前的主节点压如度列当中
 
@@ -204,7 +204,7 @@ func (tree *Tree) LevelOrder (node *TreeNode) {
 
 		fmt.Print(queueNode.Value," ")
 	}
-	
+
 }
 
 //递归方式 树的高度
@@ -240,4 +240,25 @@ func (tree *Tree)Height(node *TreeNode) int {
 
 	}
 	return  height
+}
+
+
+/*
+	https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/
+	 给定一棵二叉搜索树，请找出其中第k大的节点。
+*/
+
+func (tree*Tree)KthLargest(root *TreeNode,k int) int {
+	valsince := []int{}
+	merge(root,&valsince)
+	return valsince[k-1]
+}
+
+func merge(root *TreeNode, valsince *[]int) {
+	if root == nil {
+		return
+	}
+	merge(root.Right,valsince)
+	*valsince = append(*valsince, root.Value)
+	merge(root.Left,valsince)
 }
