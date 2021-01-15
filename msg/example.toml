@@ -1,0 +1,47 @@
+# 全局信息
+title = "TOML示例"
+
+# 应用信息
+[app]
+    author = "史布斯"
+    organization = "Mafool"
+    mark = "第一行\n第二行."            # 换行
+    release = 2020-05-27T07:32:00Z   # 时间
+
+# 数据库配置
+[mysql]
+    server = "192.168.1.1"
+    ports = [ 8001, 8001, 8002 ]     # 数组
+    connection_max = 5000
+    enabled = true
+
+# Redis主从                           # 字典对象
+[redis]#map的用法
+    [redis.master]
+        host = "10.0.0.1"
+        port = 6379
+    [redis.slave]
+        host = "10.0.0.1"
+        port = 6380
+
+# 二维数组
+[releases]
+release = ["dev", "test", "stage", "prod"]
+tags = [["dev", "stage", "prod"],[2.2, 2.1]]
+
+
+# 公司信息                             #对象嵌套
+[company]
+    name = "xx科技"
+[company.detail]
+    type = "game"
+    addr = "北京朝阳"
+    icp = "030173"
+
+[[group]]
+id=1001
+name="group1"
+
+[[group]]
+id=1002
+name="group2"
