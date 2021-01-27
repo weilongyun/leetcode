@@ -1,0 +1,30 @@
+[servers]
+    [servers.hello1]
+    serviceId=1
+    callback='http://127.0.0.1:9090/index/hello1'
+    concurrency=2
+
+    [servers.hello2]
+    serviceId=2
+    callback='http://127.0.0.1:9090/index/hello2'
+    concurrency=2
+
+    [servers.hello3]
+    serviceId=3
+    callback='http://127.0.0.1:9090/index/hello3'
+    concurrency=8
+
+    [servers.hello4]
+    serviceId=4
+    callback='http://127.0.0.1:9090/index/hello4'
+    concurrency=2
+
+    [servers.hello5]
+    serviceId=5
+    callback='http://127.0.0.1:9090/index/hello5'
+    concurrency=2
+
+    [servers.hello6]
+    serviceId=6
+    callback='http://127.0.0.1:9090/index/hello6'
+    concurrency=8

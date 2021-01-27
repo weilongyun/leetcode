@@ -9,12 +9,11 @@ import (
 func main() {
 
 	binaryTree := tree.Tree{}//建立二叉树
-	binaryTree.TreeAdd(10)
-	binaryTree.TreeAdd(11)
-	binaryTree.TreeAdd(13)
-	binaryTree.TreeAdd(9)
-	binaryTree.TreeAdd(8)
-	binaryTree.TreeAdd(12)
+	binaryTree.TreeAdd(3)
+	binaryTree.TreeAdd(1)
+	binaryTree.TreeAdd(4)
+	binaryTree.TreeAdd(2)
+
 
 	qian :=  []int{3,9,20,15,7}
 	zhong := []int{9,3,15,20,7}
@@ -44,10 +43,27 @@ func main() {
 	fmt.Println("非递归遍历二叉树的深度是：",binaryTree.Height(binaryTree.Root))
 	fmt.Println("\n")
 
+	res := binaryTree.KthLargest(binaryTree.Root,1)
+	fmt.Println("第k节点的值是:",res)
 
 	nums := []int{1,2,3,5,6}
-	res := tree.TwoSum(nums,11)
-	fmt.Println("树实现两数之和数组下标：",res)
+	twosum := tree.TwoSum(nums,11)
+	fmt.Println("树实现两数之和数组下标：",twosum)
 
+
+	table := tree.NewHashTable();
+	for i:=0; i < 20; i++ {
+		table.Create(i)
+	}
+	table.Print()
+
+	trie := tree.NewTrie();
+	trie.Insert("cd")
+	trie.Insert("cb")
+	trie.Insert("cbjdhghg")
+	trie.Insert("c")
+	fmt.Println(trie.Sreach("c"))
+	fmt.Println(trie.SreachAll("cbj"))
 }
+
 
