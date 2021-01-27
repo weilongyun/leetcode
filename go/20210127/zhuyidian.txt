@@ -1,0 +1,64 @@
+1、 for range 对于关闭的channel，和没关闭的channel，取值。
+//（1）for range 遍历，通道被关闭，取完通道后的数据，自动退出for range。
+//（2)for range 遍历，通道没有被关闭，取完通道后的数据，会deadlock。
+package main
+
+import (
+	"fmt"
+)
+func D1( che1 chan int){
+	x := <-che1
+	fmt.Println(x)
+}
+func main() {
+	var che1 chan int
+	che1=make(chan int,2 )
+	che1 <-10
+	che1 <-2
+	close(che1)
+	for i:= range che1{ //for range 遍历，通道被关闭，取完通道后的数据，自动退出for range
+		fmt.Println(i)
+	}
+没有关闭：
+package main
+
+import (
+	"fmt"
+)
+func D1( che1 chan int){
+	x := <-che1
+	fmt.Println(x)
+}
+func main() {
+	var che1 chan int
+	che1=make(chan int,2 )
+	che1 <-10
+	che1 <-2
+	for i:= range che1{ （2)for range 遍历，通道没有被关闭，取完通道后的数据，会deadlock
+		fmt.Println(i)
+	}
+
+2、关闭后的通道有一下的特点：
+（1）对一个关闭的通道再发送值会导致panic。
+（2）对一个关闭的通道进行接收，会一直获取值，直到通道为空。
+（3）对一个关闭并且没有值的通道直接接收，会得到对应类型的零值。
+（4）关闭一个已经关闭的通道会导致panic。
+3、对于无缓冲区通道
+无缓冲区的通道又称为阻塞通道；
+func main() {
+	ch := make(chan int)
+	ch <- 10
+	fmt.Println("发送成功")
+}
+因为我们使用ch := make(chan int)创建的是无缓冲的通道，代码中会阻塞ch <-10,这里会形成死锁。
+可以通过启动一个goroutine去接收值，代码如下：
+func recv(c chan int) {
+	ret := <-c
+	fmt.Println("接收成功", ret)
+}
+func main() {
+	ch := make(chan int)
+	go recv(ch) // 启用goroutine从通道接收值
+	ch <- 10
+	fmt.Println("发送成功")
+}

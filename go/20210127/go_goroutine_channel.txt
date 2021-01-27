@@ -1,0 +1,83 @@
+go语言中并发编程
+
+go语言通过 goroutine 实现。goroutine类似于线程，属于用户态的线程。我们可以依据需要创建成千上万的goroutine并发工作。goroutine是由Go语言的运行时（runtime）调度完成，而线程是由操作系统调度完成。
+
+go语言还提供channel在多个goroutine间进行通信。 goroutine和channel是go语言秉承的CSP（Communicating Sequential Process）并发模式的重要实现基础。
+
+1、使用goroutine
+
+go语言中使用goroutine非常简单，只需要在调用函数的时候再前面加上go关键字，就可以为一个函数创建一个goroutine。 一个 goroutine 必定对应一个函数，可以创建多个 goroutine 去执行相同的函数。
+
+goroutine使用GMP模型进行调度
+
+2、GOMAXPROCS go运行时的调度器使用GOMAXPROCS参数来设置goroutine线程来实现代码。
+
+Go语言中的操作系统线程和goroutine的关系：
+
+	（1）一个操作系统线程对应用户态多个goroutine。
+	（2）go程序可以同时使用多个操作系统线程。 
+	（3）goroutine和OS线程是多对多的关系，即m:n。
+
+3、channel
+
+单纯的将函数并发执行是没有意思的，函数与函数间需要交换数据才能体现出并发执行函数的意义。
+
+Go语言的并发模型是CSP（Communicating Sequential Processes），提倡通过通信共享内存而不是通过共享内存而实现通信。
+
+如果说goroutine是Go程序并发的执行体，channel就是它们之间的连接。channel是可以让一个goroutine发送特定值到另一个goroutine的通信机制。
+
+go语言中通道（channel）是一种特殊的类型。通道像一个传送带或者队列，总是遵循先入先出（first In first OUt）的规则，保证收发数据的顺序。每一个通道都是一个具体类型的管道，也就是声明channel的时候需要为其指定元素类型。
+
+channel 类型 channel是一种类型，一种引用类型。声明通道类型的格式如下：
+
+var 变量 chan 元素类型
+栗子：
+
+var ch1 chan int   // 声明一个传递整型的通道
+var ch2 chan bool  // 声明一个传递布尔型的通道
+var ch3 chan []int // 声明一个传递int切片的通道
+3.1 创建channel 通道是引用类型，通道类型的空值是nil。
+
+var ch chan int
+fmt.Println(ch) // <nil>
+声明的通过后需要使用make函数初始化之后才能使用。 3.2创建channel的格式如下：
+
+make(chan 元素类型, [缓冲大小])
+
+ch4 := make(chan int)
+ch5 := make(chan bool)
+ch6 := make(chan []int)
+3.3 channel的操作
+
+通道有发送（send）、接收（receive）和关闭（close）三种操作。
+
+发送和接收都是用 <- 符号。
+
+ch := make(chan int)
+ch <- 10 // 把10发送到ch中
+
+x := <- ch // 从ch中接收值并赋值给变量x
+<-ch       // 从ch中接收值，忽略结果
+
+close(ch)//关闭通道
+关闭后的通道有一下的特点： 
+（1）对一个关闭的通道再发送值会导致panic。
+（2）对一个关闭的通道进行接收，会一直获取值，直到通道为空。
+（3）对一个关闭并且没有值的通道直接接收，会得到对应类型的零值。
+（4）关闭一个已经关闭的通道会导致panic。
+
+3.4无缓冲的通道
+
+3.5有缓冲区
+
+3.6 for range 从同道中循环取值
+
+当向通道中发送完数据时，我们可以通过close函数来关闭通道。
+
+当通道被关闭时，再往该通道发送值，会引发panic，从该通道取值的操作会先取完通道中的值，再然后取到值到对应类型的零值。
+
+一般使用 for range 的方式。使用 for range 遍历通道，当通道被关闭时会退出for range。
+
+3.7 单向通道
+
+3.8
